@@ -52,11 +52,17 @@
         position="0 0 0"
         look-controls="enabled: false"
         wasd-controls-enabled="false"
+        cursor="fuse: false; rayOrigin: mouse"
+        raycaster="objects: .clickable"
       ></a-camera>
 
       <!-- ターゲットマーカーに反応.  <a-entity mindar-image-target="targetIndex: 0" id="marker"-->
       <!-- 開発環境.  <a-entity id="marker" visible="true" -->
-      <a-entity mindar-image-target="targetIndex: 0" id="marker">
+      <a-entity
+        mindar-image-target="targetIndex: 0"
+        id="marker"
+        class="clickable"
+      >
         <!-- 背景 -->
         <a-image
           src="#mainbg"
@@ -129,7 +135,7 @@
         <a-entity
           gltf-model="#my-model"
           scale="0.1 0.1 0.1"
-          position="-1 0.5 0"
+          position="-0.1 0.5 0"
           rotation="0 0 0"
         ></a-entity>
       </a-entity>
