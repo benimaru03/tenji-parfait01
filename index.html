@@ -1,48 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
-    <meta charset="UTF-8" />
-    <title>MindAR Image Display Sample</title>
-    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
-    <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-      }
-      #ar-container {
-        width: 100vw;
-        height: 100vh;
-      }
-    </style>
+    <meta charset="utf-8" />
+    <title>WebAR展示</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+
+    <!-- A-Frame + mindAR -->
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.7/dist/mindar-image-aframe.prod.js"></script>
   </head>
+
   <body>
-    <div id="ar-container">
-      <a-scene
-        mindar-image="imageTargetSrc: ./targets.mind; autoStart: true; uiScanning: yes;"
-        embedded
-        color-space="sRGB"
-        renderer="colorManagement: true, physicallyCorrectLights"
-        vr-mode-ui="enabled: false"
-        device-orientation-permission-ui="enabled: true"
-      >
-        <a-assets>
-          <img id="my-image" src="./sample-image.png" />
-        </a-assets>
+    <!-- 本番時はこれに書き換える→  mindar-image="imageTargetSrc: ./assets/mind/targets.mind;" -->
+    <!-- テストはこれに書き換える→  mindar-image="imageTargetSrc: ./assets/mind/targets.mind; filterMinCF:0.001; filterBeta: 0.001; autoStart: false; debug: true" -->
+    <a-scene
+      mindar-image="imageTargetSrc: ./assets/mind/targets.mind; filterMinCF:0.001; filterBeta: 0.001; autoStart: true; debug: true"
+      color-space="sRGB"
+      embedded
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: true"
+      renderer="precision: mediump; antialias: true"
+    >
+      <!-- カメラ -->
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      <!-- ターゲットマーカーに反応.  <a-entity mindar-image-target="targetIndex: 0" id="marker"-->
+      <!-- 開発環境 -->
+      <a-entity id="marker" visible="true">
+        <!-- 背景動画（16:9） -->
+        <a-video
+          src="#bg-video"
+          width="1.6"
+          height="0.9"
+          position="0 0 -0.01"
+          rotation="0 0 0"
+          autoplay
+          loop
+          muted
+        ></a-video>
 
-        <a-entity mindar-image-target="targetIndex: 0">
-          <a-plane
-            src="#my-image"
-            position="0 0 0"
-            width="1"
-            height="1"
-            rotation="0 0 0"
-          >
-          </a-plane>
-        </a-entity>
-      </a-scene>
-    </div>
+        <!-- 中景動画（1:1.618 黄金比）・ゆっくり移動 -->
+        <a-video
+          id="mid-video"
+          src="#mid-video-asset"
+          width="3"
+          height="4"
+          position="0 0 0"
+          autoplay
+          loop
+          muted
+          animation="property: position; from: 0 0 0; to: 0.2 0.1 0; dir: alternate; dur: 5000; loop: true; easing: easeInOutSine"
+        ></a-video>
+
+        <!-- 前景 PNG 複数 -->
+        <a-image
+          src="#fg1"
+          position="-0.5 0.3 0.1"
+          scale="1 1 1"
+          animation="property: scale; from: 1 1 1; to: 1.2 1.2 1.2; dir: alternate; dur: 2000; loop: true"
+        ></a-image>
+
+        <a-image
+          src="#fg2"
+          position="0.4 -0.4 0.1"
+          rotation="0 0 15"
+          animation="property: rotation; to: 0 0 -15; dur: 3000; dir: alternate; loop: true"
+        ></a-image>
+        <!-- 3Dモデルを追加！ -->
+        <a-entity
+          gltf-model="#my-model"
+          scale="0.5 0.5 0.5"
+          position="0 0.5 0"
+          rotation="0 180 0"
+        ></a-entity>
+      </a-entity>
+
+      <!-- アセット読み込み -->
+      <a-assets>
+        <video
+          id="bg-video"
+          src="./assets/video/background.mp4"
+          preload="auto"
+          autoplay
+          loop
+          muted
+          playsinline
+        ></video>
+        <video
+          id="mid-video-asset"
+          src="./assets/video/main.mp4"
+          preload="auto"
+          autoplay
+          loop
+          muted
+          playsinline
+        ></video>
+
+        <img id="fg1" src="./assets/image/Cream1.png" />
+        <img id="fg2" src="./assets/image/Cream2.png" />
+
+        <!-- スタンプ画像（必要に応じて追加） -->
+        <img id="stamp1" src="./assets/stamp/stamp1.png" />
+        <img id="stamp2" src="./assets/stamp/stamp2.png" />
+        <img id="stamp3" src="./assets/stamp/stamp3.png" />
+
+        <!-- 3Dモデルを追加 -->
+        <a-asset-item
+          id="my-model"
+          src="./assets/model/Text3D.glb"
+        ></a-asset-item>
+      </a-assets>
+    </a-scene>
+
+    <script>
+      const stampIds = ["#stamp1", "#stamp2", "#stamp3"];
+      const marker = document.querySelector("#marker");
+
+      // タップイベントでランダムスタンプ追加
+      marker.addEventListener("click", () => {
+        const stamp = document.createElement("a-image");
+        const randomId = stampIds[Math.floor(Math.random() * stampIds.length)];
+        stamp.setAttribute("src", randomId);
+
+        // ランダム位置（範囲はお好みで調整）
+        const x = (Math.random() - 0.5) * 1.2;
+        const y = (Math.random() - 0.5) * 1.2;
+        stamp.setAttribute("position", `${x} ${y} 0.2`);
+        stamp.setAttribute("scale", "0 0 0");
+
+        // ポンっと登場アニメーション
+        stamp.setAttribute("animation__scale", {
+          property: "scale",
+          to: "0.4 0.4 0.4",
+          dur: 400,
+          easing: "easeOutElastic",
+        });
+
+        marker.appendChild(stamp);
+
+        // 一定時間後に削除（例：5秒）
+        setTimeout(() => stamp.remove(), 5000);
+      });
+    </script>
   </body>
 </html>
