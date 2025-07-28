@@ -41,7 +41,7 @@
     <!-- 本番時はこれに書き換える→  mindar-image="imageTargetSrc: ./assets/mind/targets.mind;" -->
     <!-- テストはこれに書き換える→  mindar-image="imageTargetSrc: ./assets/mind/targets.mind; filterMinCF:0.001; filterBeta: 0.001; autoStart: false; debug: true" -->
     <a-scene
-      mindar-image="imageTargetSrc: ./assets/mind/targets_big.mind"
+      mindar-image="imageTargetSrc: ./assets/mind/targets_big.mind filterMinCF: 0.001; filterBeta: 0.001; autoStart: true "
       color-space="sRGB"
       vr-mode-ui="enabled: false"
       device-orientation-permission-ui="enabled: true"
@@ -60,11 +60,11 @@
         <!-- 動画 -->
 
         <a-plane
-          width="0.75"
-          height="1"
-          scale="0.7"
+          width="1.2"
+          height="1.6"
+          scale="0.75"
           position="0 0 -1"
-          rotation="0 0 0"
+          rotation="-90 0 0"
           material="shader: flat; src: #mid-video-asset"
         ></a-plane>
 
