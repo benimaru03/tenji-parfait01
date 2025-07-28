@@ -26,15 +26,6 @@
         width: 100% !important;
         height: 100% !important;
       }
-      video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100% !important;
-        width: 100% !important;
-        object-fit: cover;
-        z-index: -1;
-      }
     </style>
     <meta
       name="viewport"
@@ -73,7 +64,7 @@
           height="1"
           scale="0.7"
           position="0 0 -1"
-          rotation="-90 0 0"
+          rotation="0 0 0"
           material="shader: flat; src: #mid-video-asset"
         ></a-plane>
 
@@ -81,22 +72,22 @@
         <a-image
           src="#fg1"
           position="-0.5 0.3 0.1"
-          scale="0.5 0.5 0.5"
-          animation="property: scale; from: .5 .5 .5; to: .7 .7 .7; dir: alternate; dur: 2000; loop: true"
+          scale="0.5 0.5 0"
+          animation="property: scale; from: 0.5 0.5 0.5; to: 0.7 0.7 0.7; dir: alternate; dur: 2000; loop: true"
         ></a-image>
 
         <a-image
           src="#fg2"
           position="0.4 -0.4 0.1"
           rotation="0 0 15"
-          scale="0.5 0.5 0.5"
+          scale="0.5 0.5 0"
           animation="property: rotation; to: 0 0 -15; dur: 3000; dir: alternate; loop: true"
         ></a-image>
         <!-- 3Dモデルを追加！ -->
         <a-entity
           gltf-model="#my-model"
           scale="0.1 0.1 0.1"
-          position="-1 0.5 0"
+          position="-0.5 0.5 0"
           rotation="0 0 0"
         ></a-entity>
       </a-entity>
