@@ -67,20 +67,21 @@
       <!-- 開発環境.  <a-entity id="marker" visible="true" -->
       <a-entity mindar-image-target="targetIndex: 0" id="marker">
         <!-- 動画 -->
+
         <a-plane
-          width="1.2"
-          height="0.67"
+          width="0.9"
+          height="1.2"
+          scale="0.7"
           position="0 0 0"
           material="shader: flat; src: #mid-video-asset"
-          animation="property: position; from: 0 0 0; to: 0.2 0.1 0; dir: alternate; dur: 5000; loop: true; easing: easeInOutSine"
-        />
+        ></a-plane>
 
         <!-- 前景 PNG 複数 -->
         <a-image
           src="#fg1"
           position="-0.5 0.3 0.1"
-          scale="1 1 1"
-          animation="property: scale; from: 1 1 1; to: 1.2 1.2 1.2; dir: alternate; dur: 2000; loop: true"
+          scale="0.5 0.5 0.5"
+          animation="property: scale; from: .5 .5 .5; to: .7 .7 .7; dir: alternate; dur: 2000; loop: true"
         ></a-image>
 
         <a-image
