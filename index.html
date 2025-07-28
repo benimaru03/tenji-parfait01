@@ -17,7 +17,7 @@
     <!-- 本番時はこれに書き換える→  mindar-image="imageTargetSrc: ./assets/mind/targets.mind;" -->
     <!-- テストはこれに書き換える→  mindar-image="imageTargetSrc: ./assets/mind/targets.mind; filterMinCF:0.001; filterBeta: 0.001; autoStart: false; debug: true" -->
     <a-scene
-      mindar-image="imageTargetSrc: ./assets/mind/targets_big.mind; filterMinCF:0.001; filterBeta: 0.001; autoStart: true; debug: true"
+      mindar-image="imageTargetSrc: ./assets/mind/targets_big.mind"
       color-space="sRGB"
       embedded
       vr-mode-ui="enabled: false"
@@ -28,8 +28,8 @@
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <!-- ターゲットマーカーに反応.  <a-entity mindar-image-target="targetIndex: 0" id="marker"-->
-      <!-- 開発環境 -->
-      <a-entity id="marker" visible="true">
+      <!-- 開発環境.  <a-entity id="marker" visible="true" -->
+      <a-entity mindar-image-target="targetIndex: 0" id="marker"--></a-entity>
         <!-- 背景動画（16:9） -->
         <a-video
           src="#bg-video"
