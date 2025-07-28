@@ -66,19 +66,15 @@
       <!-- ターゲットマーカーに反応.  <a-entity mindar-image-target="targetIndex: 0" id="marker"-->
       <!-- 開発環境.  <a-entity id="marker" visible="true" -->
       <a-entity mindar-image-target="targetIndex: 0" id="marker">
-        <!-- 中景動画（1:1.618 黄金比）・ゆっくり移動 -->
-        <a-video
-          id="mid-video"
-          src="#mid-video-asset"
-          crossorigin="anonymous"
-          width="“1”.2"
-          height="“0.”67"
+        <!-- 動画 -->
+        <a-plane
+          width="1.2"
+          height="0.67"
           position="0 0 0"
-          autoplay
-          loop
-          muted
+          material="shader: flat; src: #mid-video-asset"
           animation="property: position; from: 0 0 0; to: 0.2 0.1 0; dir: alternate; dur: 5000; loop: true; easing: easeInOutSine"
-        ></a-video>
+        />
+
         <!-- 前景 PNG 複数 -->
         <a-image
           src="#fg1"
