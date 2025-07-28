@@ -60,7 +60,9 @@
         <!-- 背景 -->
         <a-image
           src="#mainbg"
-          position="0 0 -0.5"
+          hight="1.2"
+          width="0.9"
+          position="0 0 -2"
           rotation="0 0 0"
           scale="0 0 0"
         ></a-image>
@@ -68,42 +70,65 @@
         <!-- 中景 -->
         <a-image
           src="#maincv"
-          position="0 0 0"
+          position="0 0 -1"
           rotation="0 0 0"
-          scale="1 1 0"
+          scale="0 0 0"
         ></a-image>
 
         <!-- 前景 PNG 複数 -->
         <a-image
           src="#fg1"
-          position="-0.5 0.3 0.5"
-          scale="0.2 0.2 0"
-          animation="property: position; from: 0.1 0.5 0; to: 0.1 1 0; dir: alternate; dur: 2000; loop: true"
+          position="-0.5 0.3 -0.5"
+          scale="0 0 0"
+          animation="property: position; from:-0.5 0.3 -0.5; to:-0.5 0.2 -0.; dir: alternate; dur: 2000; loop: true"
         ></a-image>
 
         <a-image
           src="#fg2"
           position="0.1 -0.4 0.2"
           rotation="0 0 15"
-          scale="0.2 0.2 0"
+          scale="0 0 0"
           animation="property: rotation; to: 0 0 -15; dur: 3000; dir: alternate; loop: true"
         ></a-image>
 
-        <!-- 環境光を追加！ -->
-        <a-light type="ambient" intensity="1" color="#ffffff"></a-light>
-        <a-light
-          type="directional"
-          intensity="1"
-          position="0 0 0"
-          color="#ffffff"
-        ></a-light>
+        <a-image
+          src="#fg3"
+          position="0.1 -0.6 0.2"
+          rotation="0 0 15"
+          scale="0 0 0"
+          animation="property: rotation; to: 0 0 -15; dur: 3000; dir: alternate; loop: true"
+        ></a-image>
+
+        <a-image
+          src="#fg4"
+          position="0.15 -0.8 0.2"
+          rotation="0 0 15"
+          scale="0 0 0"
+          animation="property: rotation; to: 0 0 -15; dur: 3000; dir: alternate; loop: true"
+        ></a-image>
+
+        <a-image
+          src="#fg5"
+          position="0.08 -0.9 0.2"
+          rotation="0 0 15"
+          scale="0 0 0"
+          animation="property: rotation; to: 0 0 -15; dur: 3000; dir: alternate; loop: true"
+        ></a-image>
+        <a-image
+          src="#fg6"
+          position="0.1 -1 0.2"
+          rotation="0 0 15"
+          scale="0 0 0"
+          animation="property: rotation; to: 0 0 -15; dur: 3000; dir: alternate; loop: true"
+        ></a-image>
 
         <!-- 3Dモデルを追加！ -->
         <a-entity
           gltf-model="#my-model"
           scale="0.1 0.1 0.1"
-          position="0.1 0.5 0"
+          position="-1 0.5 0"
           rotation="0 0 0"
+          animation="property: position; from: -1 0.5 0; to: -1 0.3 0; dir: alternate; dur: 2000; loop: true"
         ></a-entity>
       </a-entity>
 
@@ -114,6 +139,10 @@
 
         <img id="fg1" src="./assets/image/Cream1.png" />
         <img id="fg2" src="./assets/image/Cream2.png" />
+        <img id="fg3" src="./assets/image/IchigoW1.png" />
+        <img id="fg4" src="./assets/image/Star1.png" />
+        <img id="fg5" src="./assets/image/Nuts1.png" />
+        <img id="fg6" src="./assets/image/Ice1.png" />
 
         <!-- スタンプ画像（必要に応じて追加） -->
         <img id="stamp1" src="./assets/stamp/stamp1.png" />
