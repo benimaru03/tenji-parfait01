@@ -70,7 +70,7 @@
           width="0.9"
           position="0 0 -2"
           rotation="0 0 0"
-          scale="1 1 0"
+          scale="1 1 1"
         ></a-image>
 
         <!-- 中景 -->
@@ -78,14 +78,15 @@
           src="#maincv"
           position="0 0 -1"
           rotation="0 0 0"
-          scale="1 1 0"
+          scale="1 1 1"
+          animation="property: position; from:0 -0.8 0; to:0 0.2 0; dir: alternate; dur: 2000; loop: true"
         ></a-image>
 
         <!-- 前景 PNG 複数 -->
         <a-image
           src="#fg1"
           position="-0.5 0.3 -0.5"
-          scale="1 1 0"
+          scale="1 1 1"
           animation="property: position; from:-0.5 0.3 -0.5; to:-0.5 0.2 -0.; dir: alternate; dur: 2000; loop: true"
         ></a-image>
 
@@ -93,7 +94,7 @@
           src="#fg2"
           position="0.1 -0.4 0.2"
           rotation="0 0 15"
-          scale="1 1 0"
+          scale="1 1 1"
           animation="property: rotation; to: 0 0 -15; dur: 3000; dir: alternate; loop: true"
         ></a-image>
 
@@ -101,7 +102,7 @@
           src="#fg3"
           position="0 0 0.1"
           rotation="0 0 15"
-          scale="1 1 0"
+          scale="1 1 1"
         ></a-image>
 
         <!-- 環境光を追加！ -->
