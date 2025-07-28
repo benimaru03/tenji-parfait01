@@ -73,6 +73,7 @@
           height="1.2"
           scale="0.7"
           position="0 0 0"
+          rotation="-90 0 0"
           material="shader: flat; src: #mid-video-asset"
         ></a-plane>
 
@@ -93,9 +94,9 @@
         <!-- 3Dモデルを追加！ -->
         <a-entity
           gltf-model="#my-model"
-          scale="0.5 0.5 0.5"
-          position="0 0.5 0"
-          rotation="0 180 0"
+          scale="0.1 0.1 0.1"
+          position="-1 0.5 0"
+          rotation="0 0 0"
         ></a-entity>
       </a-entity>
 
@@ -120,6 +121,8 @@
         <img id="stamp3" src="./assets/stamp/stamp3.png" />
 
         <!-- 3Dモデルを追加 -->
+        <a-light type="ambient" color="#FFFFFF" intensity="1"></a-light>
+
         <a-asset-item
           id="my-model"
           src="./assets/model/Text3D.glb"
