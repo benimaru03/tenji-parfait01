@@ -63,36 +63,38 @@
         id="marker"
         class="clickable"
       >
-        <a-plane
-          width="1.2"
-          height="1.6"
-          scale="1"
+        <!-- 背景 -->
+        <a-image
+          src="#mainbg"
+          hight="1.2"
+          width="0.9"
           position="0 0 -1"
-          rotation="-90 0 0"
-          material="shader: flat; src: #mid-video-asset"
-        ></a-plane>
+          rotation="0 0 0"
+          scale="1.5 1.5 1"
+        ></a-image>
+
+        <!-- 中景 -->
+        <a-image
+          src="#maincv"
+          hight="1.2"
+          width="0.9"
+          position="0 0 -0.9"
+          rotation="0 0 0"
+          scale="1.2 1.2 1"
+        ></a-image>
 
         <!-- 前景 PNG 複数 -->
 
         <a-image
           src="#fg3"
           position="0 0 -0.8"
-          rotation="0 0 15"
-          scale="1 1 1"
+          rotation="0 0 0"
+          scale="1.2 1.2 1"
         ></a-image>
       </a-entity>
 
       <!-- アセット読み込み -->
       <a-assets>
-        <video
-          id="mid-video-asset"
-          src="./assets/video/main.mp4"
-          preload="auto"
-          autoplay
-          loop
-          muted
-          playsinline
-        ></video>
         <img id="mainbg" src="./assets/image/main_bg.jpg" />
         <img id="maincv" src="./assets/image/main_cv.png" />
 
@@ -104,6 +106,12 @@
         <img id="stamp1" src="./assets/stamp/stamp1.png" />
         <img id="stamp2" src="./assets/stamp/stamp2.png" />
         <img id="stamp3" src="./assets/stamp/stamp3.png" />
+
+        <!-- 3Dモデルを追加 -->
+        <a-asset-item
+          id="my-model"
+          src="./assets/model/Text3D.glb"
+        ></a-asset-item>
       </a-assets>
     </a-scene>
 
